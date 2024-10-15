@@ -1,0 +1,23 @@
+:root {
+    --primary: #111111;
+    --secondary: #212121;
+    --tertiary: #b5b5b5b0;
+    --text: #f0e8e8;
+}
+
+[data-bs-theme="dark"] {
+    --bs-body-color: var(--text) !important;
+    --bs-body-color-rgb: 218, 218, 218 !important;
+    --bs-body-bg: var(--primary) !important;
+}
+body {
+    background-image: radial-gradient(
+        circle at 0% 10%,
+        var(--secondary),
+        var(--primary) 70%
+    );
+    font-family: "Poppins", sans-serif;
+}
+.ease-0-1 {
+    transition: all 0.1s ease;
+}
