@@ -36,7 +36,7 @@ function Dashboard(props: DashboardProps) {
                         data.data[data.data.length - 1].total_collected,
                     total_spent: data.data[data.data.length - 1].total_spent,
                     balance: data.data[data.data.length - 1].balance,
-                    all_stats: data.data.reverse(),
+                    all_stats: data.data,
                 }); // Set the fetched stats in state
             } catch (error) {
                 console.error("Failed to fetch stats:", error);

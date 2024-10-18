@@ -3,10 +3,9 @@ import Dashboard from "./components/Dashboard";
 import Cash from "./components/Cash";
 import Transactions from "./components/Transactions";
 import { useState } from "react";
+import BACKEND_URL from "./config";
 
 function App() {
-    const BACKEND_URL = "http://localhost:5000/api/";
-
     var [currentPage, setCurrentPage] = useState("Dashboard");
 
     return (
