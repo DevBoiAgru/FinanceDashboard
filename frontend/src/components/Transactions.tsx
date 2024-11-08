@@ -8,7 +8,7 @@ interface TransactionsProps {
 
 async function sendTransaction(transaction: Transaction, backend_url: string) {
     try {
-        const response = await fetch(`${backend_url}transactions`, {
+        const response = await fetch(`${backend_url}/transactions`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
