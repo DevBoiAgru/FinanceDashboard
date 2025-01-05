@@ -15,6 +15,7 @@ from .db import (
     db_create_stats
 )
 
+# Use dist folder for the frontend (built frontend)
 app = Flask(__name__, static_folder=f"../frontend/dist", static_url_path="")
 CORS(app)
 

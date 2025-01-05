@@ -4,6 +4,8 @@ from .schemas import TransactionCreate, StatsCreate, Wallet
 # Initialise the database
 db_conn = sqlite3.connect("app.db")
 
+denominations = [1, 2, 5, 10, 20, 50, 100, 200, 500]
+
 # Create data structre if it don't exist
 with db_conn:
     db = db_conn.cursor()
@@ -12,17 +14,10 @@ with db_conn:
     db.execute("CREATE TABLE IF NOT EXISTS cash_denominations (denomination INTEGER PRIMARY KEY, count INTEGER)")
     
     # Set default cash denominations
-    db.execute("INSERT OR IGNORE INTO cash_denominations (denomination, count) VALUES (?, ?)", (1, 0))
-    db.execute("INSERT OR IGNORE INTO cash_denominations (denomination, count) VALUES (?, ?)", (2, 0))
-    db.execute("INSERT OR IGNORE INTO cash_denominations (denomination, count) VALUES (?, ?)", (5, 0))
-    db.execute("INSERT OR IGNORE INTO cash_denominations (denomination, count) VALUES (?, ?)", (10, 0))
-    db.execute("INSERT OR IGNORE INTO cash_denominations (denomination, count) VALUES (?, ?)", (20, 0))
-    db.execute("INSERT OR IGNORE INTO cash_denominations (denomination, count) VALUES (?, ?)", (50, 0))
-    db.execute("INSERT OR IGNORE INTO cash_denominations (denomination, count) VALUES (?, ?)", (100, 0))
-    db.execute("INSERT OR IGNORE INTO cash_denominations (denomination, count) VALUES (?, ?)", (200, 0))
-    db.execute("INSERT OR IGNORE INTO cash_denominations (denomination, count) VALUES (?, ?)", (500, 0))
+    for denomination in denominations:
+        db.execute("INSERT OR IGNORE INTO cash_denominations (denomination, count) VALUES (?, ?)", (denomination, 0))
 
-
+db_conn.commit()
 
 
 # Transactions

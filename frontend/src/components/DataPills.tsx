@@ -1,3 +1,5 @@
+// These are called "Data Pills" just because they look like pills and display data
+
 interface DataPillProps {
     children: React.ReactNode;
 }

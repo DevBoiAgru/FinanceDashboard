@@ -2,6 +2,7 @@ import DataPill from "./DataPills";
 import LineChart from "./LineChart";
 import { useEffect, useState } from "react";
 import { Stat, BackendData } from "../types/backend";
+import { CURRENCY_SYMBOL } from "../config";
 
 interface DashboardProps {
     backend_url: string;
@@ -54,15 +55,18 @@ function Dashboard(props: DashboardProps) {
             <div className="container mt-5">
                 <div className="row justify-content-between">
                     <DataPill>
-                        <i className="bi bi-arrow-down me-2" /> Total Income: ₹
+                        <i className="bi bi-arrow-down me-2" /> Total Income:{" "}
+                        {CURRENCY_SYMBOL}
                         {stats.total_collected}
                     </DataPill>
                     <DataPill>
-                        <i className="bi bi-piggy-bank me-2" /> Balance: ₹
+                        <i className="bi bi-piggy-bank me-2" /> Balance:{" "}
+                        {CURRENCY_SYMBOL}
                         {stats.balance}
                     </DataPill>
                     <DataPill>
-                        <i className="bi bi-arrow-up me-2" /> Total Expense: ₹
+                        <i className="bi bi-arrow-up me-2" /> Total Expense:{" "}
+                        {CURRENCY_SYMBOL}
                         {stats.total_spent}
                     </DataPill>
                 </div>

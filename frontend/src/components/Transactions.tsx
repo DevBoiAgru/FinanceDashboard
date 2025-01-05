@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { BackendData, Transaction } from "../types/backend";
 import TransactionForm from "./TransactionForm";
+import { CURRENCY_SYMBOL } from "../config";
 
 interface TransactionsProps {
     backend_url: string;
@@ -78,7 +79,7 @@ function Transactions(props: TransactionsProps) {
                                 <td>{transaction.id}</td>
                                 <td>{transaction.description}</td>
                                 <td>
-                                    ₹
+                                    {CURRENCY_SYMBOL}
                                     {transaction.denomination *
                                         transaction.num_notes}
                                 </td>
