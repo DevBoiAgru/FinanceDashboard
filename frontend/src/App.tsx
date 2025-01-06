@@ -3,7 +3,7 @@ import Dashboard from "./components/Dashboard";
 import Cash from "./components/Cash";
 import Transactions from "./components/Transactions";
 import { useState } from "react";
-import BACKEND_URL from "./config";
+import { BACKEND_URL } from "./config";
 
 function App() {
     var [currentPage, setCurrentPage] = useState("Dashboard");
