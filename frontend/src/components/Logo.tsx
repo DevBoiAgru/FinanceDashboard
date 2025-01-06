@@ -2,6 +2,7 @@ interface LogoProps {
     width?: number;
     height?: number;
     className?: string;
+    onClick?: () => void;
 }
 
 function LogoSVG(props: LogoProps) {
@@ -12,6 +13,7 @@ function LogoSVG(props: LogoProps) {
             height={props.height || 60}
             viewBox="0 0 1920 1920"
             {...props}
+            onClick={props.onClick}
         >
             <path
                 fillRule="evenodd"

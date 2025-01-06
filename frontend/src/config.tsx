@@ -1,5 +1,2 @@
-const BACKEND_URL = "http://localhost:5000/api";
-const CURRENCY_SYMBOL = "₹";
-
-export { BACKEND_URL };
-export { CURRENCY_SYMBOL };
+export const BACKEND_URL = "http://localhost:5000/api";
+export const CURRENCY_SYMBOL = "₹";

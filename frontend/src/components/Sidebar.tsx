@@ -3,6 +3,7 @@ import LogoSVG from "./Logo";
 
 interface SidebarProps {
     page: string;
+    backend_url: string;
     updatePage: (page: string) => void;
 }
 
@@ -13,7 +14,26 @@ function Sidebar(props: SidebarProps) {
             style={{ width: "280px" }}
         >
             <div className="d-flex justify-content-center mb-4 mt-3">
-                <LogoSVG />
+                <LogoSVG
+                    onClick={() =>
+                        // Call backend to turn off the server
+                        fetch(`${props.backend_url}/shutdown`, {
+                            method: "POST",
+                            body: JSON.stringify({
+                                shutdown: true,
+                                restart: false,
+                            }),
+                            headers: {
+                                "Content-Type": "application/json",
+                            },
+                        }).then((res) => {
+                            if (res.ok) {
+                                console.log("Server turned off");
+                                window.close();
+                            }
+                        })
+                    }
+                />
             </div>
             <ListGroup variant="flush">
                 <ListGroup.Item

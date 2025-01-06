@@ -1,9 +1,11 @@
 import os
+import signal
+import threading
+import time
 
-from flask import Flask, request, send_from_directory
+from flask import Flask, request, send_from_directory, abort
 from flask_cors import CORS
 from datetime import datetime
-from functools import wraps
 
 from .schemas import TransactionCreate, StatsCreate, Wallet
 from .db import (
@@ -167,6 +169,20 @@ def get_stats():
 @app.get("/api/cash")
 def get_cash():
     return {"error": None, "message": "Success", "data": db_get_cash_denominations()}, 200
+
+@app.post("/api/shutdown")
+def shutdown():
+    body: dict = request.get_json()
+    if (body.get("shutdown", "") != True):
+        return {"error": "Invalid shutdown request"}, 400
+    def shutdown():
+        time.sleep(1)
+        os.kill(os.getpid(), signal.SIGINT)
+    
+    threading.Thread(target=shutdown).start()
+
+    return "", 204
+
 
 if __name__ == "__main__":
     app.run(debug=True)
